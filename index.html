@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#12110f" />
+  <meta name="description" content="Tasty Crousty Business School : Bachelor Tasty Crousty, PGE Master Poulet, parcours Labubu, option 67 et Battle d'Auras Scooba. Site parodique interactif." />
+  <title>TASTY CROUSTY® — Business School of Crunch</title>
+  <style>
+    :root {--ink:#171610;--muted:#6f6b62;--cream:#f7f3e9;--white:#fffefa;--accent:#ff6331;--acid:#dfff8d;--line:#e6e0d5;--radius:22px;--shadow:0 20px 60px rgba(27,21,12,.10)}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:96px}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #bb6fff;outline-offset:3px}
+    ::selection{background:var(--acid);color:var(--ink)}
+    .container{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+    .eyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase}
+    .eyebrow .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:8px}
+    .display{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;letter-spacing:-.025em;font-weight:900;text-transform:uppercase;line-height:.92}
+    .arrow{display:inline-block;transition:transform .2s}
+    a:hover .arrow,button:hover .arrow{transform:translate(3px,-3px)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:52px;padding:0 22px;border:1px solid transparent;border-radius:11px;font-weight:850;font-size:13px;transition:transform .2s,background .2s,box-shadow .2s;text-align:center}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-orange{background:var(--accent);color:#19120c;box-shadow:0 9px 0 rgba(0,0,0,.10)}
+    .btn-orange:hover{background:#ff7950}
+    .btn-dark{background:var(--ink);color:white}
+    .btn-outline{background:transparent;border-color:#777268;color:var(--ink)}
+    .btn-outline:hover{background:#fff}
+    .btn-cream{background:var(--cream);color:var(--ink)}
+    .site-header{position:sticky;top:0;z-index:70;background:rgba(247,243,233,.93);backdrop-filter:blur(15px);border-bottom:1px solid rgba(49,44,37,.12)}
+    .topbar{background:var(--ink);color:#f8f5ea;padding:9px 0;font-size:10px;font-weight:800;letter-spacing:.11em;text-align:center}
+    .topbar b{color:var(--acid)}
+    .nav{height:75px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .logo{display:inline-flex;align-items:center;gap:11px;line-height:.86;flex-shrink:0}
+    .logo-mark{display:grid;place-items:center;width:41px;height:41px;background:var(--accent);border-radius:12px;color:var(--ink);font-family:Impact,sans-serif;font-size:20px;transform:rotate(-7deg)}
+    .logo-type{font-family:Impact,"Arial Narrow",sans-serif;font-size:21px;letter-spacing:.015em}
+    .logo-type small{display:block;font-family:Arial,sans-serif;font-size:8px;font-weight:900;letter-spacing:.3em;margin-top:5px}
+    .nav-links{display:flex;align-items:center;gap:29px;font-size:12px;font-weight:800}
+    .nav-links a:not(.btn){transition:color .2s}
+    .nav-links a:not(.btn):hover{color:var(--accent)}
+    .nav-links .btn{min-height:42px;padding:0 17px;font-size:12px}
+    .hamburger{display:none;border:0;background:none;font-size:25px}
+    .hero{position:relative;overflow:hidden;background:var(--ink);color:var(--cream)}
+    .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 45%,rgba(255,114,47,.12),transparent 42%),linear-gradient(rgba(255,255,255,.027) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.027) 1px,transparent 1px);background-size:auto,50px 50px,50px 50px;pointer-events:none}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:20px;align-items:center;min-height:680px;padding-block:92px 80px}
+    .hero-copy{position:relative;z-index:2}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.24);border-radius:100px;padding:9px 13px;font-size:11px;font-weight:850;letter-spacing:.08em;color:var(--acid);margin-bottom:28px}
+    .pulse{width:8px;height:8px;border-radius:50%;background:var(--acid);box-shadow:0 0 0 5px rgba(223,255,141,.12)}
+    h1{font-size:clamp(74px,8.2vw,133px);margin:0 0 24px;max-width:760px}
+    .hero-highlight{color:var(--accent)}
+    .hero-desc{max-width:480px;color:#cbc6bb;line-height:1.75;font-size:15px;margin-bottom:30px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .hero-meta{display:flex;gap:27px;margin-top:51px;padding-top:23px;border-top:1px solid rgba(255,255,255,.16)}
+    .hero-meta div{display:flex;flex-direction:column;gap:6px}
+    .hero-meta strong{font-family:Impact,sans-serif;font-size:24px;font-weight:900}
+    .hero-meta span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#a7a399;font-weight:800}
+    .hero-art{position:relative;height:550px;align-self:center;isolation:isolate}
+    .orb{position:absolute;width:430px;height:430px;border-radius:50%;background:var(--accent);top:55px;left:50%;transform:translateX(-50%);box-shadow:0 0 0 30px rgba(255,99,49,.07),0 0 0 80px rgba(255,99,49,.035)}
+    .orb::after{content:"";position:absolute;inset:20px;border:1px dashed rgba(38,24,10,.25);border-radius:50%}
+    .art-svg{position:absolute;width:104%;height:92%;left:-2%;top:15px;filter:drop-shadow(14px 29px 17px rgba(0,0,0,.20))}
+    .floating{position:absolute;z-index:3;border:1px solid rgba(0,0,0,.15);box-shadow:var(--shadow);color:var(--ink);font-weight:900}
+    .floating.one{left:-8px;top:65px;background:var(--acid);padding:15px 19px;transform:rotate(-9deg);font-size:14px;border-radius:9px}
+    .floating.two{right:-7px;bottom:52px;background:var(--cream);padding:16px 18px;transform:rotate(8deg);font-size:14px;border-radius:9px}
+    .floating.three{right:4px;top:39px;background:var(--cream);padding:12px 15px;border-radius:50%;font-size:12px;transform:rotate(13deg)}
+    .ticker{background:var(--acid);overflow:hidden;border-bottom:2px solid var(--ink);border-top:2px solid var(--ink)}
+    .ticker-track{display:flex;gap:45px;white-space:nowrap;width:max-content;padding:16px 0;animation:marquee 33s linear infinite;font-size:13px;font-weight:950;letter-spacing:.13em}
+    .ticker-track span::after{content:'✳';margin-left:45px;color:var(--accent)}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    .section{padding:105px 0}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:44px}
+    .section-head h2{font-size:clamp(52px,6vw,88px);margin:13px 0 0;max-width:730px}
+    .section-head p{max-width:330px;font-size:14px;line-height:1.75;color:var(--muted)}
+    .section-head .btn{flex-shrink:0}
+    .intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+    .intro-card{padding:32px 28px;background:var(--white);border:1px solid var(--line);border-radius:17px;min-height:225px;transition:transform .2s,box-shadow .2s}
+    .intro-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .intro-icon{font-size:31px;margin-bottom:24px}
+    .intro-card h3{font-size:18px;letter-spacing:-.035em;margin:0 0 10px}
+    .intro-card p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+    .program-section{background:#ece8dd}
+    .program-tabs{display:flex;align-items:center;gap:8px;margin-bottom:28px;background:#dfd9cd;border-radius:13px;padding:6px;width:fit-content;max-width:100%}
+    .program-tab{background:transparent;color:#585349;border:0;border-radius:9px;padding:15px 23px;font-size:12px;font-weight:900;white-space:nowrap}
+    .program-tab[aria-selected=true]{background:var(--ink);color:white;box-shadow:0 5px 13px rgba(0,0,0,.15)}
+    .program-layout{display:grid;grid-template-columns:1.08fr .92fr;border-radius:22px;overflow:hidden;box-shadow:0 15px 35px rgba(27,22,12,.06)}
+    .program-main{background:var(--ink);color:var(--white);padding:44px 43px 36px}
+    .program-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:42px}
+    .tag{padding:8px 12px;border:1px solid rgba(255,255,255,.3);border-radius:6px;font-size:10px;font-weight:950;letter-spacing:.07em;text-transform:uppercase}
+    .tag.hot{background:var(--acid);color:var(--ink);border-color:var(--acid)}
+    .program-main h3{font-size:clamp(65px,7vw,101px);margin:0 0 20px}
+    .program-main h3 em{font-style:normal;color:var(--accent)}
+    .program-main p{line-height:1.75;font-size:14px;max-width:460px;color:#c3bfb8;margin-bottom:37px}
+    .program-details{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:38px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.17)}
+    .program-details span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#aaa49b;margin-bottom:9px;font-weight:800}
+    .program-details strong{font-size:19px;font-weight:900}
+    .program-side{background:var(--accent);padding:43px 38px;color:var(--ink)}
+    .program-side h4{font-size:11px;letter-spacing:.16em;margin:0 0 23px}
+    .year{display:grid;grid-template-columns:45px 1fr;gap:15px;padding:17px 0;border-bottom:1px solid rgba(23,22,16,.19)}
+    .year-num{font-family:Impact,sans-serif;font-size:32px;color:rgba(26,21,14,.52)}
+    .year h5{font-size:16px;margin:3px 0 6px}
+    .year p{font-size:12px;line-height:1.55;margin:0;color:#3c281f}
+    .side-end{padding-top:28px}
+    .side-end h4{margin:0 0 8px;font-size:25px;letter-spacing:-.04em}
+    .side-end p{font-size:12px;line-height:1.65;margin:0}
+    .options-section{background:var(--cream)}
+    .options-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .option-card{position:relative;text-align:left;background:var(--white);color:var(--ink);border:1px solid var(--line);border-radius:17px;padding:24px 21px;min-height:285px;display:flex;flex-direction:column;align-items:start;transition:transform .25s,border-color .25s,box-shadow .25s}
+    .option-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+    .option-card.is-picked{border:2px solid var(--accent);padding:23px 20px;background:#fff9f1}
+    .option-card .corner{position:absolute;right:16px;top:18px;display:grid;place-items:center;width:24px;height:24px;border:1px solid #c9c3b8;border-radius:50%;font-size:12px;color:transparent}
+    .option-card.is-picked .corner{background:var(--accent);border-color:var(--accent);color:var(--ink)}
+    .option-icon{height:77px;width:77px;border-radius:20px;display:grid;place-items:center;background:#e8ffae;font-size:40px;transform:rotate(-7deg);margin-bottom:30px}
+    .option-card:nth-child(4n+2) .option-icon{background:#f4d4ff;transform:rotate(6deg)}
+    .option-card:nth-child(4n+3) .option-icon{background:#ffcfba}
+    .option-card:nth-child(4n+4) .option-icon{background:#d0e7ff;transform:rotate(8deg)}
+    .option-card .program-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:#aa6448;margin-bottom:10px}
+    .option-card h3{font-size:19px;line-height:1.13;letter-spacing:-.045em;margin:0 0 10px}
+    .option-card p{font-size:12px;line-height:1.55;color:var(--muted);margin:0 0 23px}
+    .option-card .pick-text{font-size:11px;font-weight:950;text-transform:uppercase;letter-spacing:.06em;margin-top:auto}
+    .options-footer{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:22px}
+    .options-footer p{font-size:13px;color:var(--muted);max-width:600px;line-height:1.65}
+    .selected-strip{padding:11px 16px;background:var(--acid);border-radius:9px;font-size:12px;font-weight:900;display:flex;align-items:center;gap:8px}
+    .method-section{background:#171610;color:var(--white)}
+    .method-section .section-head p{color:#aaa59b}
+    .method-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:45px;align-items:center}
+    .method-visual{border-radius:20px;background:var(--acid);color:var(--ink);min-height:410px;padding:30px;overflow:hidden;position:relative;display:flex;flex-direction:column;justify-content:space-between}
+    .method-visual .micro{font-size:12px;font-weight:900;letter-spacing:.14em}
+    .method-visual .giant{font-family:Impact,sans-serif;font-size:clamp(125px,17vw,230px);letter-spacing:-.09em;line-height:.75;transform:rotate(-9deg);align-self:center}
+    .method-visual .bottom{font-size:19px;line-height:1.14;font-weight:950;max-width:290px}
+    .method-visual .seal{position:absolute;right:22px;top:30px;border:2px solid var(--ink);border-radius:50%;width:94px;height:94px;display:grid;place-items:center;text-align:center;font-weight:950;font-size:13px;transform:rotate(12deg)}
+    .steps{display:flex;flex-direction:column}
+    .step{display:grid;grid-template-columns:55px 1fr;gap:14px;border-bottom:1px solid rgba(255,255,255,.17);padding:23px 0}
+    .step:first-child{padding-top:0}
+    .step-num{font-family:Impact,sans-serif;font-size:36px;color:var(--accent)}
+    .step h3{margin:5px 0 9px;font-size:19px}
+    .step p{font-size:13px;line-height:1.75;color:#b4b0a7;margin:0}
+    .recruit-section{background:var(--cream)}
+    .recruit-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .recruit-panel{padding:35px;background:var(--white);border:1px solid var(--line);border-radius:19px}
+    .recruit-panel.dark{background:var(--ink);color:var(--white);border-color:var(--ink)}
+    .recruit-panel .big-stat{font-family:Impact,sans-serif;font-size:84px;line-height:.93;color:var(--accent);margin:25px 0 7px}
+    .recruit-panel h3{font-size:29px;letter-spacing:-.05em;line-height:1.12;margin:15px 0}
+    .recruit-panel p{font-size:13px;line-height:1.75;color:var(--muted)}
+    .recruit-panel.dark p{color:#bab4a9}
+    .job-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:25px}
+    .job-pills span{border:1px solid rgba(255,255,255,.27);border-radius:50px;padding:10px 13px;font-size:11px;font-weight:900}
+    .recruit-panel:not(.dark) .job-pills span{border-color:#dbd5c9}
+    .admission-section{background:#ece8dd}
+    .admission-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px;align-items:start}
+    .admission-copy h2{font-size:clamp(64px,7vw,103px);margin:17px 0 22px}
+    .admission-copy>p{font-size:14px;line-height:1.8;color:var(--muted);margin-bottom:24px}
+    .admission-check{padding:21px 0;border-top:1px solid #cec6bb;display:flex;gap:12px;align-items:center;font-size:13px;font-weight:850}
+    .admission-check b{background:var(--acid);height:26px;width:26px;border-radius:50%;display:grid;place-items:center}
+    .application{background:var(--white);padding:33px;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+    .application-head{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:24px}
+    .application-head h3{font-size:23px;margin:7px 0 0;letter-spacing:-.045em}
+    .live-tag{font-size:10px;font-weight:950;border-radius:7px;padding:9px 11px;background:#e5ffd0;white-space:nowrap}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px}
+    .field{display:flex;flex-direction:column;gap:9px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:11px;font-weight:900;letter-spacing:.015em}
+    .field label small{color:#867e74;font-weight:500}
+    .field input,.field select,.field textarea{width:100%;height:49px;padding:0 13px;background:#faf8f2;border:1px solid #ded9cf;color:var(--ink);border-radius:8px;outline:none;font-size:13px;transition:border-color .2s,background .2s}
+    .field textarea{height:100px;padding:13px;resize:vertical;line-height:1.5}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);background:#fff}
+    .field input::placeholder,.field textarea::placeholder{color:#a4a097}
+    .aura-wrap{border-radius:9px;background:#f6f3eb;border:1px solid var(--line);padding:15px 17px}
+    .aura-row{display:flex;justify-content:space-between;font-size:12px;font-weight:950}
+    .aura-row output{color:#db562c}
+    input[type=range]{accent-color:var(--accent);width:100%;margin-top:15px}
+    .aura-label{display:flex;justify-content:space-between;font-size:10px;color:#8c857b;margin-top:6px}
+    .consent{display:flex;align-items:flex-start;gap:11px;font-size:11px;color:#736c61;line-height:1.6;margin:20px 0 17px;cursor:pointer}
+    .consent input{accent-color:var(--accent);margin-top:3px;flex:0 0 auto}
+    .form-submit{width:100%;border:0;min-height:53px}
+    .form-note{margin:14px 0 0;text-align:center;color:#8a837a;font-size:10px;line-height:1.6}
+    .faq-section{background:var(--cream)}
+    .faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:45px}
+    .faq-grid h2{font-size:clamp(55px,6vw,85px);margin:15px 0}
+    details{border-bottom:1px solid #d4cdc1;padding:18px 0}
+    summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:15px;font-weight:850;font-size:15px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';font-family:Arial,sans-serif;font-size:25px;font-weight:400;color:var(--accent)}
+    details[open] summary::after{content:'−'}
+    details p{font-size:13px;line-height:1.75;color:var(--muted);max-width:630px;margin-bottom:1px}
+    .closing{background:var(--accent);padding:77px 0;text-align:center}
+    .closing h2{font-size:clamp(65px,10.2vw,155px);margin:0 0 20px}
+    .closing p{font-size:15px;margin:0 0 24px;font-weight:750}
+    .footer{background:var(--ink);color:#fff;padding:45px 0 23px}
+    .footer-main{display:flex;align-items:start;justify-content:space-between;gap:50px;padding-bottom:43px}
+    .footer .logo-type{color:white}
+    .footer-links{display:flex;gap:25px;font-size:12px;font-weight:800}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:23px;display:flex;justify-content:space-between;gap:20px;font-size:10px;color:#a49f95;line-height:1.65}
+    .toast{position:fixed;left:50%;bottom:27px;transform:translate(-50%,170%);opacity:0;z-index:110;max-width:min(460px,calc(100% - 24px));background:var(--ink);color:white;border:1px solid #4d4941;box-shadow:0 15px 45px rgba(0,0,0,.23);border-radius:12px;padding:16px 20px;font-size:12px;line-height:1.6;font-weight:750;transition:.35s;text-align:center}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .modal-overlay{position:fixed;z-index:100;inset:0;background:rgba(0,0,0,.74);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+    .modal-overlay.open{display:flex}
+    .modal{background:var(--cream);color:var(--ink);border-radius:19px;width:min(520px,100%);padding:42px 38px;text-align:center;box-shadow:0 50px 100px #0006}
+    .modal .big-emoji{font-size:64px}
+    .modal h3{font-size:55px;margin:15px 0 13px}
+    .modal p{font-size:14px;line-height:1.75;color:#585247}
+    .modal .reference{background:var(--acid);border-radius:8px;padding:12px;font-size:12px;font-weight:850;margin:22px 0}
+    .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:1020px){.nav-links{gap:17px}.hero-grid{min-height:590px}.hero-art{height:470px}.orb{width:350px;height:350px;top:50px}.options-grid{grid-template-columns:repeat(2,1fr)}.hero-meta{gap:18px}.method-grid{gap:25px}}
+    @media(max-width:760px){.container{width:min(100% - 32px,580px)}.topbar{font-size:9px;line-height:1.5}.nav{height:67px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:26px 22px;flex-direction:column;align-items:stretch;gap:22px;box-shadow:0 20px 35px #0002}.nav-links.open{display:flex}.hamburger{display:block}.hero-grid{grid-template-columns:1fr;padding-block:60px 35px;gap:0}.hero-art{height:390px;max-width:430px;width:100%;margin:20px auto 0}.orb{width:310px;height:310px;top:35px}.hero-meta{margin-top:31px}.floating.one{left:1px;top:55px}.floating.two{right:1px;bottom:25px}.floating.three{right:4px;top:8px}.section{padding:72px 0}.section-head{display:block;margin-bottom:30px}.section-head h2{margin-bottom:15px}.intro-grid{grid-template-columns:1fr}.intro-card{min-height:0}.program-layout{grid-template-columns:1fr}.program-main,.program-side{padding:30px 25px}.program-main h3{font-size:70px}.program-tabs{width:100%}.program-tab{flex:1;padding:14px 10px;font-size:10px}.options-grid{grid-template-columns:repeat(2,1fr);gap:10px}.option-card{padding:20px 15px;min-height:295px}.option-card.is-picked{padding:19px 14px}.option-icon{height:64px;width:64px;font-size:31px;margin-bottom:20px}.option-card h3{font-size:17px}.options-footer{flex-wrap:wrap}.method-grid,.recruit-grid,.admission-grid,.faq-grid{grid-template-columns:1fr;gap:27px}.method-visual{min-height:300px}.method-visual .giant{font-size:145px}.admission-copy h2{font-size:72px}.footer-main,.footer-bottom{flex-direction:column;gap:25px}.footer-links{flex-wrap:wrap}.application{padding:23px 19px}.closing{padding:60px 0}.closing h2{font-size:79px}}
+    @media(max-width:420px){.container{width:calc(100% - 28px)}h1{font-size:66px}.hero-meta{gap:11px;justify-content:space-between}.hero-meta strong{font-size:19px}.hero-meta span{font-size:8px}.hero-art{height:340px}.orb{width:270px;height:270px}.floating{font-size:11px!important}.program-main h3{font-size:63px}.program-details strong{font-size:16px}.option-card{min-height:318px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:1}.application-head h3{font-size:19px}.modal{padding:28px 19px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="topbar">⚡ RENTRÉE 2027 — ADMISSIONS OUVERTES <b>UNIQUEMENT DANS CETTE DIMENSION</b> — 100% PARODIE</div>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navigation principale">
+      <a class="logo" href="#top" aria-label="Tasty Crousty, accueil"><span class="logo-mark">TC</span><span class="logo-type">TASTY<br>CROUSTY<small>BUSINESS SCHOOL®</small></span></a>
+      <div class="nav-links" id="nav-links">
+        <a href="#ecole">L'ÉCOLE</a><a href="#programmes">FORMATIONS</a><a href="#specialisations">SPÉCIALISATIONS</a><a href="#recrutement">DÉBOUCHÉS</a><a class="btn btn-orange" href="#candidature">CANDIDATER <span class="arrow">↗</span></a>
+      </div>
+      <button class="hamburger" id="hamburger" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Ouvrir le menu">☰</button>
+    </nav>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-eyebrow"><span class="pulse"></span> THE NEXT GEN OF CROUSTILLANCE</span>
+          <h1 class="display" id="hero-title">LE FUTUR<br>A DU <span class="hero-highlight">CROUSTY.</span></h1>
+          <p class="hero-desc">L'école qui forme les leaders du poulet, les visionnaires de la sauce et les futurs CEO de l'aura. Ici, ton potentiel se mange avec les doigts.</p>
+          <div class="hero-actions"><a href="#programmes" class="btn btn-orange">DÉCOUVRIR NOS CURSUS <span class="arrow">↗</span></a><a href="#candidature" class="btn btn-outline" style="border-color:#80786e;color:white">DÉPOSER MON DOSSIER <span class="arrow">↗</span></a></div>
+          <div class="hero-meta"><div><strong>2</strong><span>Formations d'élite*</span></div><div><strong>8</strong><span>Spécialisations absurdes</span></div><div><strong>∞</strong><span>Potentiel d'aura</span></div></div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orb"></div>
+          <svg class="art-svg" viewBox="0 0 560 560" role="img" aria-label="Illustration de seau de poulet croustillant" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="bucket" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff6da"/><stop offset="1" stop-color="#e9bd8c"/></linearGradient><linearGradient id="chicken" x1="0" x2="1"><stop stop-color="#ffc35c"/><stop offset=".54" stop-color="#e78d2d"/><stop offset="1" stop-color="#ad5b22"/></linearGradient><filter id="ds"><feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#38170c" flood-opacity=".3"/></filter></defs>
+            <g transform="rotate(-21 207 235)" filter="url(#ds)"><path d="M180 156C139 149 103 110 121 79c12-21 37-15 48-4 16-16 43-5 41 16-2 21-21 26-24 47" fill="#fff4d1" stroke="#66351b" stroke-width="7"/><path d="M197 162c-9-51 28-102 79-98 52 5 78 44 71 82-8 49-47 78-89 79-30 1-53-20-61-63Z" fill="url(#chicken)" stroke="#66351b" stroke-width="8"/><path d="m238 111 14 7m28-24 10 13m-49 55 12 7m53-26 14-2" stroke="#fbd17f" stroke-width="10" stroke-linecap="round"/></g>
+            <g transform="rotate(21 353 202)" filter="url(#ds)"><path d="M357 167c28-33 22-66 45-67 16 0 24 16 21 24 18-3 32 16 20 30-11 12-32 10-59 26" fill="#fff4d1" stroke="#66351b" stroke-width="7"/><path d="M360 176c-16-40-61-62-92-38-37 28-41 77-21 108 18 30 61 43 89 23 29-22 43-61 24-93Z" fill="url(#chicken)" stroke="#66351b" stroke-width="8"/><path d="m283 181 17 8m-23 35 16-3m38-22 8 16" stroke="#ffcc70" stroke-width="10" stroke-linecap="round"/></g>
+            <g transform="rotate(-5 270 270)" filter="url(#ds)"><path d="M211 202c-29-11-66 0-70 27-3 21 14 44 43 50l26-77" fill="url(#chicken)" stroke="#66351b" stroke-width="7"/><path d="M331 191c38-13 72 2 80 35 7 27-12 44-40 51l-40-86" fill="url(#chicken)" stroke="#66351b" stroke-width="7"/><path d="M163 258h246l-26 220c-2 17-23 30-48 30H237c-25 0-45-13-48-30L163 258Z" fill="url(#bucket)" stroke="#58321c" stroke-width="10" stroke-linejoin="round"/><path d="M159 248h254v31H159z" rx="9" fill="#ec592e" stroke="#58321c" stroke-width="8"/><path d="M204 279 218 485M369 279l-14 207" stroke="#cf9466" stroke-width="5" opacity=".5"/><rect x="209" y="315" width="150" height="130" rx="20" fill="#ff6635" transform="rotate(3 284 380)" stroke="#593321" stroke-width="7"/><text x="284" y="366" text-anchor="middle" font-family="Impact,Arial Black,sans-serif" font-weight="900" font-size="49" fill="#20170f">TC.</text><text x="284" y="397" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="15" letter-spacing="1.6" fill="#20170f">BIZ SCHOOL</text><path d="M259 417h50" stroke="#20170f" stroke-width="5"/></g>
+            <g fill="#dfff8d" stroke="#191710" stroke-width="4"><path d="m71 280 9 21 21 9-21 9-9 21-9-21-21-9 21-9Z"/><path d="m447 91 6 14 14 6-14 6-6 14-6-14-14-6 14-6Z"/><path d="m480 363 6 14 14 6-14 6-6 14-6-14-14-6 14-6Z"/></g>
+          </svg>
+          <div class="floating one">★ TOP 1 EN SAUCE<br><small>selon nous-mêmes</small></div>
+          <div class="floating two">CERTIFIED<br>CRUNCH EXPERT™</div>
+          <div class="floating three">+ 67 AURA</div>
+        </div>
+      </div>
+    </section>
+    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>THINK BIG. EAT CROUSTY.</span><span>BACHELOR TASTY CROUSTY</span><span>MASTER POULET</span><span>LABUBU STRATEGY</span><span>OPTION 67</span><span>BATTLE D'AURAS SCOOBA</span><span>THINK BIG. EAT CROUSTY.</span><span>BACHELOR TASTY CROUSTY</span><span>MASTER POULET</span><span>LABUBU STRATEGY</span><span>OPTION 67</span><span>BATTLE D'AURAS SCOOBA</span></div></div>
+    <section id="ecole" class="section"><div class="container"><div class="section-head"><div><div class="eyebrow"><span class="dot"></span> NOTRE ADN</div><h2 class="display">UNE ÉCOLE.<br>MILLE SAUCES.</h2></div><p>Pourquoi suivre la tendance quand on peut la paner ? Nos valeurs tiennent en trois mots : ambition, audace, mayonnaise.</p></div><div class="intro-grid"><article class="intro-card"><div class="intro-icon">🍗</div><h3>Excellence croustillante</h3><p>Une pédagogie 70 % terrain, 20 % sauce, 10 % « mais qui a mangé mon menu ? »</p></article><article class="intro-card"><div class="intro-icon">🧸</div><h3>Vision Labubu globale</h3><p>Apprends à négocier un Labubu rare en pleine période de rupture de stock. Soft skills garanties*</p></article><article class="intro-card"><div class="intro-icon">⚡</div><h3>Leadership d'aura</h3><p>Prendre la parole, gagner un battle, entrer dans une pièce avec un niveau d'aura hors catégorie.</p></article></div></div></section>
+    <section id="programmes" class="section program-section"><div class="container"><div class="section-head"><div><div class="eyebrow"><span class="dot"></span> LE CATALOGUE ACADÉMIQUE</div><h2 class="display">DES DIPLÔMES<br>QUI CROQUENT.</h2></div><p>Deux formations fictives. Une ambition très réelle : être la personne la plus croustillante de la réunion.</p></div><div class="program-tabs" role="tablist" aria-label="Choisir un programme"><button class="program-tab" type="button" role="tab" id="tab-bachelor" aria-selected="true" aria-controls="program-panel" data-program="bachelor">01 / BACHELOR TASTY CROUSTY</button><button class="program-tab" type="button" role="tab" id="tab-master" aria-selected="false" aria-controls="program-panel" data-program="master">02 / PGE MASTER POULET</button></div><div class="program-layout" id="program-panel" role="tabpanel" aria-labelledby="tab-bachelor"><div class="program-main"><div class="program-top"><span class="tag hot" id="program-badge">BAC → BAC+3</span><span class="tag">FULL CROUSTY EXPERIENCE</span></div><h3 class="display" id="program-title">BACHELOR<br><em>TASTY CROUSTY.</em></h3><p id="program-desc">Trois ans pour maîtriser le management de la sauce, l'économie du bucket et les fondamentaux du Labubu international.</p><div class="program-details"><div><span>Durée</span><strong id="program-duration">3 ANS</strong></div><div><span>Format</span><strong id="program-format">INITIAL / ALTERNANCE*</strong></div><div><span>Niveau d'aura visé</span><strong id="program-aura">+ 67 XP</strong></div></div><a class="btn btn-orange" href="#candidature" id="program-apply">CANDIDATER AU BACHELOR <span class="arrow">↗</span></a></div><div class="program-side"><h4 id="year-heading">LE PROGRAMME EN 3 ACTES</h4><div id="year-list"><div class="year"><div class="year-num">01</div><div><h5>Fondamentaux du crousty</h5><p>Économie du tenders, marketing de la sauce, introduction au Labubu.</p></div></div><div class="year"><div class="year-num">02</div><div><h5>Stratégie & management</h5><p>Négociation du dernier nugget, supply chain du poulet, growth marketing.</p></div></div><div class="year"><div class="year-num">03</div><div><h5>Leadership & spécialisation</h5><p>Projet de fin d'études : lancer une marque qui fait « crounch ».</p></div></div></div><div class="side-end"><h4 id="program-project">GRAND PROJET : CROUSTY STARTUP</h4><p id="program-project-desc">Pitch final devant un jury de professionnels imaginaires, mais extrêmement exigeants.</p></div></div></div></div></section>
+    <section id="specialisations" class="section options-section"><div class="container"><div class="section-head"><div><div class="eyebrow"><span class="dot"></span> MAJEURES ET SPÉCIALISATIONS</div><h2 class="display">CHOISIS TON<br>DESTIN CROUSTY.</h2></div><p>Sélectionne ton option préférée : elle sera automatiquement ajoutée à ton dossier de candidature.</p></div><div class="options-grid" id="option-grid"></div><div class="options-footer"><p>Les enseignements, débouchés et diplômes affichés sont purement humoristiques. Aucune certification ni inscription réelle.</p><div class="selected-strip" id="selected-strip" role="status">✦ PARCOURS : LABUBU MANAGEMENT</div></div></div></section>
+    <section class="section method-section"><div class="container"><div class="section-head"><div><div class="eyebrow" style="color:var(--acid)">✳ LA MÉTHODE TCBS</div><h2 class="display">LE TALENT<br>SE CULTIVE.<br><span style="color:var(--accent)">LE POULET AUSSI.</span></h2></div><p>Une méthode d'apprentissage qui casse les codes. Et parfois la panure.</p></div><div class="method-grid"><div class="method-visual"><div class="micro">TCBS EXPERIENTIAL LEARNING™</div><div class="seal">100%<br>SAUCE<br>PROOF</div><div class="giant">67</div><div class="bottom">UNE ÉNERGIE.<br>UNE MENTALITÉ.<br>UNE SAUCE.</div></div><div class="steps"><article class="step"><span class="step-num">01</span><div><h3>Apprendre par le crounch</h3><p>Cas pratiques : gérer une crise de sauce, piloter un projet Labubu, défendre un business plan pour un food truck.</p></div></article><article class="step"><span class="step-num">02</span><div><h3>Développer son aura</h3><p>Prises de parole, simulations de battle d'auras et techniques avancées de présence scooba.</p></div></article><article class="step"><span class="step-num">03</span><div><h3>Entreprendre sans serviette</h3><p>Un projet entrepreneurial fictif accompagné de la première idée jusqu'au pitch final.</p></div></article><article class="step"><span class="step-num">04</span><div><h3>Rejoindre le réseau des anciens</h3><p>Accès imaginaire à notre communauté de Chief Chicken Officers et d'experts du packaging émotionnel.</p></div></article></div></div></div></section>
+    <section id="recrutement" class="section recruit-section"><div class="container"><div class="section-head"><div><div class="eyebrow"><span class="dot"></span> CARRIÈRES ET RECRUTEMENT</div><h2 class="display">PAS UN MÉTIER.<br>UNE DESTINÉE.</h2></div><p>Un recrutement plus sélectif qu'un dernier tenders à partager. Des débouchés inventés, mais savoureux.</p></div><div class="recruit-grid"><div class="recruit-panel dark"><span class="eyebrow" style="color:var(--acid)">LES MÉTIERS DE DEMAIN</span><h3>Il y a des carrières.<br>Et il y a des légendes.</h3><p>Nos diplômés imaginaires s'illustrent dans des fonctions aussi stratégiques que discutables.</p><div class="job-pills"><span>Chief Chicken Officer</span><span>Labubu Brand Strategist</span><span>Consultant Senior en Aura</span><span>Head of Sauce Analytics</span><span>Trader de Tenders</span><span>Scooba Battle Director</span></div></div><div class="recruit-panel"><span class="eyebrow">PROCESSUS DE SÉLECTION</span><div class="big-stat">4</div><h3>Étapes pour révéler<br>ton potentiel.</h3><p>1. Dépose ton dossier fictif. 2. Passe l'entretien de motivation sauce. 3. Affronte le test d'aura 67. 4. Reçois le verdict du Grand Conseil du Poulet.</p><a class="btn btn-dark" href="#candidature" style="margin-top:16px">JE TENTE MA CHANCE <span class="arrow">↗</span></a></div></div></div></section>
+    <section id="candidature" class="section admission-section"><div class="container admission-grid"><div class="admission-copy"><div class="eyebrow"><span class="dot"></span> ADMISSION 2027 — SIMULATION</div><h2 class="display">TON AURA<br>MÉRITE<br><span style="color:var(--accent)">UN CAMPUS.</span></h2><p>Candidate au Bachelor Tasty Crousty ou au PGE Master Poulet. Choisis ta spécialisation, calibre ton niveau d'aura et présente ta meilleure motivation.</p><div class="admission-check"><b>✓</b> Candidature 100 % gratuite et parodique</div><div class="admission-check"><b>✓</b> Aucun serveur, aucune donnée envoyée</div><div class="admission-check"><b>✓</b> Réponse immédiate du jury imaginaire</div></div><form id="apply-form" class="application"><div class="application-head"><div><div class="eyebrow" style="color:#ce592e">DOSSIER N° TC-2027</div><h3>Candidate comme une légende.</h3></div><span class="live-tag">● RECRUTEMENT FICTIF</span></div><div class="form-grid"><div class="field"><label for="first-name">Prénom *</label><input id="first-name" name="prenom" autocomplete="given-name" placeholder="Ex. Karim" required maxlength="50"></div><div class="field"><label for="last-name">Nom *</label><input id="last-name" name="nom" autocomplete="family-name" placeholder="Ex. Crousty" required maxlength="50"></div><div class="field full"><label for="email">Adresse e-mail * <small>(jamais transmise)</small></label><input id="email" name="email" type="email" autocomplete="email" placeholder="prenom@exemple.fr" required maxlength="120"></div><div class="field"><label for="formation">Formation choisie *</label><select id="formation" name="formation" required><option value="bachelor">Bachelor Tasty Crousty</option><option value="master">PGE Master Poulet</option></select></div><div class="field"><label for="specialisation">Spécialisation *</label><select id="specialisation" name="specialisation" required></select></div><div class="field"><label for="campus">Campus souhaité</label><select id="campus" name="campus"><option>Paris — La Défense du Tenders</option><option>Lyon — Part-Dieu de la Sauce</option><option>Marseille — Vieux-Port du Poulet</option><option>100% en distanciel (crousty)</option></select></div><div class="field"><label for="level">Niveau actuel</label><select id="level" name="niveau"><option>Lycéen·ne / futur bac</option><option>Bac obtenu</option><option>Bac+1 / Bac+2</option><option>Bac+3 et plus</option><option>Autodidacte en poulet</option></select></div><div class="field full"><label for="motivation">Pourquoi mérites-tu le titre de Crousty Scholar ?</label><textarea id="motivation" name="motivation" maxlength="500" placeholder="Depuis mon plus jeune âge, j'ai toujours cru au pouvoir du croustillant..."></textarea></div><div class="field full"><div class="aura-wrap"><div class="aura-row"><label for="aura">TON NIVEAU D'AURA ACTUEL</label><output id="aura-value" for="aura">67 / 100 — AURA LÉGENDAIRE</output></div><input id="aura" name="aura" type="range" min="0" max="100" value="67" step="1"><div class="aura-label"><span>PNJ</span><span>SCOOBA SUPRÊME</span></div></div></div></div><label class="consent"><input type="checkbox" required><span>J'ai compris qu'il s'agit d'un site humoristique : je ne m'inscris à aucune vraie formation, et mes informations restent uniquement dans mon navigateur pendant cette simulation. *</span></label><button class="btn btn-orange form-submit" type="submit">ENVOYER MA CANDIDATURE (FICTIVE) <span class="arrow">↗</span></button><p class="form-note">🔒 Démonstration 100 % locale. Aucun email envoyé. Aucun diplôme délivré.</p></form></div></section>
+    <section class="section faq-section"><div class="container faq-grid"><div><div class="eyebrow"><span class="dot"></span> FAQ OFFICIELLEMENT OFFICIEUSE</div><h2 class="display">DES<br>QUESTIONS ?</h2><p style="font-size:13px;color:var(--muted);line-height:1.7">Le Grand Conseil de la Panure répond à toutes tes interrogations existentielles.</p></div><div><details><summary>Le Bachelor Tasty Crousty est-il reconnu par l'État ?</summary><p>Non. TCBS est une école totalement fictive et ce site est une parodie. Aucun diplôme, titre RNCP, crédit ECTS ou partenariat réel n'est proposé.</p></details><details><summary>Quelle est la différence entre le Bachelor et le Master Poulet ?</summary><p>Le Bachelor dure 3 ans imaginaires et pose les bases du management croustillant. Le PGE Master Poulet dure 2 ans imaginaires et pousse plus loin les domaines de la stratégie sauce, de l'option 67 et du battle d'auras Scooba.</p></details><details><summary>Est-ce que je peux choisir la spécialisation Labubu ?</summary><p>Absolument : Labubu & Luxury Merchandising et Labubu International font partie des options humoristiques du Bachelor. Tu peux sélectionner ton parcours directement sur cette page.</p></details><details><summary>Qu'est-ce que le fameux cursus « 67 » ?</summary><p>Un programme de haute intensité d'aura, de gestion du chiffre mystique et de finance quantitative de la sauce. Le plus grand mystère, c'est qu'on ne sait toujours pas pourquoi 67.</p></details><details><summary>Le formulaire envoie-t-il vraiment mes informations ?</summary><p>Non. Il fonctionne uniquement dans ton navigateur et affiche une réponse fictive. Le site n'a aucun serveur de candidature et ne conserve ni ne transmet tes données.</p></details></div></div></section>
+    <section class="closing"><div class="container"><div class="eyebrow">✳ TON AVENIR COMMENCE ICI (POUR RIRE)</div><h2 class="display">STAY SAUCY.</h2><p>Le monde n'attend pas. Ton bucket non plus.</p><a href="#candidature" class="btn btn-dark">JE CANDIDATE AU CROUSTY <span class="arrow">↗</span></a></div></section>
+  </main>
+  <footer class="footer"><div class="container"><div class="footer-main"><a class="logo" href="#top"><span class="logo-mark">TC</span><span class="logo-type">TASTY<br>CROUSTY<small>BUSINESS SCHOOL®</small></span></a><div class="footer-links"><a href="#ecole">L'école</a><a href="#programmes">Programmes</a><a href="#specialisations">Options</a><a href="#recrutement">Recrutement</a><a href="#candidature">Admissions</a></div></div><div class="footer-bottom"><span>© 2027 TCBS — Tasty Crousty Business School. Parodie créative, sans affiliation ni accréditation. Labubu est mentionné à titre humoristique.</span><span>* Tout est fictif sauf ton appétit.</span></div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-overlay" id="modal-overlay" role="presentation"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="big-emoji">🏆🍗</div><h3 class="display" id="modal-title">ADMIS·E !*</h3><p id="modal-text">Le Grand Conseil du Poulet a examiné ton aura.</p><div class="reference" id="modal-reference"></div><p style="font-size:11px;color:#81796f">*Admission entièrement fictive. Aucun dossier n'a été envoyé, aucune donnée n'a été enregistrée.</p><button class="btn btn-dark" type="button" id="modal-close">RETOURNER AU CAMPUS ✕</button></div></div>
+  <script>
+    (() => {
+      'use strict';
+      const data = {
+        bachelor:{badge:'BAC → BAC+3 (FICTIF)',title:'BACHELOR<br><em>TASTY CROUSTY.</em>',desc:'Trois ans imaginaires pour maîtriser le management de la sauce, l’économie du bucket et les fondamentaux du Labubu international.',duration:'3 ANS',format:'INITIAL / ALT.*',aura:'+ 67 XP',heading:'LE PROGRAMME EN 3 ACTES',years:[['Fondamentaux du crousty','Économie du tenders, marketing de la sauce, introduction au Labubu.'],['Stratégie & management','Négociation du dernier nugget, supply chain du poulet, growth marketing.'],['Leadership & spécialisation','Projet de fin d’études : lancer une marque qui fait « crounch ».']],project:'GRAND PROJET : CROUSTY STARTUP',projectDesc:'Pitch final devant un jury de professionnels imaginaires, mais extrêmement exigeants.',cta:'CANDIDATER AU BACHELOR'},
+        master:{badge:'PGE / BAC+3 → BAC+5 (FICTIF)',title:'PGE MASTER<br><em>POULET.</em>',desc:'Le Programme Grande École le plus croustillant du multivers : haute stratégie de poulet, science du 67 et géopolitique du battle d’auras.',duration:'2 ANS',format:'FULL AURA / ALT.*',aura:'+ 999 XP',heading:'LE PROGRAMME EN 2 ACTES',years:[['M1 — Executive Chicken Core','Finance du tenders, stratégie 67, négociation de sauce, Scooba fundamentals.'],['M2 — Masterclass Aura & Poulet','Battle d’auras avancé, Chicken Private Equity, thèse professionnelle « pourquoi le poulet ? ».']],project:'GRAND ORAL : BATTLE D’AURAS',projectDesc:'Soutenance finale face au Conseil de la Sauce. Épreuve éliminatoire : annoncer « 67 » sans rire.',cta:'CANDIDATER AU MASTER POULET'}
+      };
+      const options = {
+        bachelor:[
+          {id:'labubu-luxe',icon:'🧸',name:'Labubu & Luxury Merchandising',desc:'Stratégie de drop, rareté artificielle et diplomatie des peluches.',label:'MAJEURE ICONIQUE'},
+          {id:'labubu-global',icon:'🌍',name:'Labubu International Business',desc:'Importer de l’aura et exporter des Labubus sur cinq continents.',label:'DOUBLE CULTURE'},
+          {id:'sauce-growth',icon:'🥫',name:'Growth Hacking de la Sauce',desc:'Transformer un simple supplément sauce en licorne du food business.',label:'MAJEURE BUSINESS'},
+          {id:'crousty-consult',icon:'📈',name:'Crousty Consulting & Supply Crunch',desc:'Auditer le croustillant et sécuriser la chaîne logistique du tenders.',label:'MAJEURE CONSEIL'}
+        ],
+        master:[
+          {id:'option-67',icon:'6️⃣7️⃣',name:'Option 67 — Strategic Aura Finance',desc:'Valorisation du chiffre 67, hedge funds de nuggets et aura arbitrage.',label:'SPÉCIALITÉ 67'},
+          {id:'scooba',icon:'⚡',name:'Battle d’Auras & Scooba Leadership',desc:'Dominer la room, défendre sa sauce et maîtriser le contre-scooba.',label:'SPÉCIALITÉ LÉGENDAIRE'},
+          {id:'chicken-pe',icon:'🍗',name:'Chicken Private Equity',desc:'Fusions-acquisitions de buckets et capital-investissement de poulets.',label:'SPÉCIALITÉ FINANCE'},
+          {id:'diplomatie',icon:'👑',name:'Diplomatie du Tenders & Soft Power',desc:'Gérer des sommets internationaux sans perdre la dernière frite.',label:'SPÉCIALITÉ GÉOPOLITIQUE'}
+        ]
+      };
+      let currentProgram='bachelor';
+      const selections={bachelor:'labubu-luxe',master:'option-67'};
+      const $=id=>document.getElementById(id);
+      const escapeText=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      function renderProgram(which){
+        currentProgram=which; const d=data[which];
+        document.querySelectorAll('.program-tab').forEach(b=>{const active=b.dataset.program===which;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1});
+        $('program-panel').setAttribute('aria-labelledby','tab-'+which);
+        $('program-badge').textContent=d.badge;$('program-title').innerHTML=d.title;$('program-desc').textContent=d.desc;
+        $('program-duration').textContent=d.duration;$('program-format').textContent=d.format;$('program-aura').textContent=d.aura;
+        $('year-heading').textContent=d.heading;
+        $('year-list').innerHTML=d.years.map((y,i)=>`<div class="year"><div class="year-num">${String(i+1).padStart(2,'0')}</div><div><h5>${escapeText(y[0])}</h5><p>${escapeText(y[1])}</p></div></div>`).join('');
+        $('program-project').textContent=d.project;$('program-project-desc').textContent=d.projectDesc;
+        $('program-apply').innerHTML=escapeText(d.cta)+' <span class="arrow">↗</span>';
+        $('formation').value=which;
+        renderOptions();updateFormOptions();
+      }
+      function renderOptions(){
+        $('option-grid').innerHTML=options[currentProgram].map(o=>`<button type="button" class="option-card ${selections[currentProgram]===o.id?'is-picked':''}" data-option="${o.id}" aria-pressed="${selections[currentProgram]===o.id}"><span class="corner">✓</span><span class="option-icon" aria-hidden="true">${o.icon}</span><span class="program-label">${escapeText(o.label)}</span><h3>${escapeText(o.name)}</h3><p>${escapeText(o.desc)}</p><span class="pick-text">${selections[currentProgram]===o.id?'✓ OPTION SÉLECTIONNÉE':'CHOISIR CE PARCOURS ↗'}</span></button>`).join('');
+        const chosen=options[currentProgram].find(o=>o.id===selections[currentProgram]);
+        $('selected-strip').textContent='✦ PARCOURS CHOISI : '+chosen.name.toUpperCase();
+      }
+      function updateFormOptions(){
+        $('specialisation').innerHTML=options[currentProgram].map(o=>`<option value="${o.id}">${escapeText(o.name)}</option>`).join('');
+        $('specialisation').value=selections[currentProgram];
+      }
+      document.querySelectorAll('.program-tab').forEach(b=>b.addEventListener('click',()=>renderProgram(b.dataset.program)));
+      $('option-grid').addEventListener('click',e=>{const card=e.target.closest('[data-option]');if(!card)return;selections[currentProgram]=card.dataset.option;renderOptions();updateFormOptions();showToast('Spécialisation ajoutée à ton dossier fictif ✦')});
+      $('formation').addEventListener('change',e=>renderProgram(e.target.value));
+      $('specialisation').addEventListener('change',e=>{selections[currentProgram]=e.target.value;renderOptions()});
+      $('aura').addEventListener('input',e=>{const n=Number(e.target.value);$('aura-value').textContent=n+' / 100 — '+(n<20?'PNJ EN DEVENIR':n<45?'AURA DISCRÈTE':n<67?'AURA EN CROISSANCE':n<90?'AURA LÉGENDAIRE':'SCOOBA SUPRÊME')});
+      const menu=$('nav-links'),burger=$('hamburger');
+      burger.addEventListener('click',()=>{const on=!menu.classList.contains('open');menu.classList.toggle('open',on);burger.setAttribute('aria-expanded',String(on));burger.textContent=on?'✕':'☰'});
+      menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.textContent='☰'}));
+      let toastTimer;
+      function showToast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3500)}
+      const modal=$('modal-overlay');
+      function closeModal(){modal.classList.remove('open');document.body.style.overflow='';$('modal-close').blur()}
+      $('apply-form').addEventListener('submit',e=>{
+        e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;
+        const first=$('first-name').value.trim(),chosen=options[currentProgram].find(o=>o.id===$('specialisation').value);
+        const aura=Number($('aura').value);const score=String(Math.floor(100000+Math.random()*900000));
+        $('modal-text').textContent=`Félicitations ${first} ! Tu es symboliquement admis·e au ${currentProgram==='bachelor'?'Bachelor Tasty Crousty':'PGE Master Poulet'}, spécialité « ${chosen.name} ». Ton aura de ${aura}/100 a impressionné le jury imaginaire.`;
+        $('modal-reference').textContent='CERTIFICAT 100 % FICTIF · TC-'+score;
+        modal.classList.add('open');document.body.style.overflow='hidden';$('modal-close').focus();
+      });
+      $('modal-close').addEventListener('click',closeModal);
+      modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeModal()});
+      renderProgram('bachelor');
+    })();
+  </script>
+</body>
+</html>
